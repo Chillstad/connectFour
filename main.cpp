@@ -88,6 +88,8 @@ bool checkWin(char token, string& grid) {
         for (int x = 0; x < WIDTH; x++) {
             if (checkVertical(token, grid, x, y)) {
                 return true;
+            } else if (checkHorizontal(token, grid, x, y)) {
+                return true;
             }
         }
     }
@@ -112,7 +114,20 @@ bool checkVertical(char token, string& grid, int x, int y) {
 }
 
 bool checkHorizontal(char token, string& grid, int x, int y) {
+    int streak = 0;
+    for (int xSelection = 0; xSelection < WIDTH; xSelection++) {
+        if (grid[coordToIndex(xSelection, y)] == token) {
+            streak++;
+        } else {
+            streak = 0;
+        }
 
+        if (streak >= 4) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 bool checkNegativeOne(char token, string& grid, int x, int y) {
