@@ -131,7 +131,16 @@ bool checkHorizontal(char token, string& grid, int x, int y) {
 }
 
 bool checkNegativeOne(char token, string& grid, int x, int y) {
+    int streak = 0;
+    int xVar, yVar;
 
+    while(xVar >= 0 or yVar < HEIGHT) {
+        if (grid[coordToIndex(xVar, yVar)] == token) {
+            streak += 1;
+        } else {
+            streak -= 1;
+        }
+    }
 }
 
 bool checkOne(char token, string& grid, int x, int y) {
